@@ -11,11 +11,11 @@ from PIL import (Image, ImageDraw, ImageEnhance, ImageFilter,
 from youtubesearchpython.__future__ import VideosSearch
 import numpy as np
 from config import YOUTUBE_IMG_URL
-A = "De"
-B = "v : @"
-D = "NG"
-E = "_"
-V = "D"
+A = "BO"
+B = "T : @"
+D = "N"
+E = "O"
+V = "F"
 DEV = A+B+D+E+V
 YOUTUBE_IMG = "https://telegra.ph/file/f995c36145125aa44bd37.jpg"
 
@@ -104,7 +104,7 @@ async def get_thumb(videoid):
 
         image4 = ImageDraw.Draw(image2)
         image4.text((20, 10), f" {DEV}", fill="white", font=font1, align="left")
-        image4.text((680, 150), "𝐌𝐔𝐒𝐈𝐂 𝐍𝐎f", fill="white", stroke_width=2, stroke_fill="white", align="left")
+        image4.text((680, 150), "MUSIC NOF", fill="white", stroke_width=2, stroke_fill="white", align="left")
         # title
         title1 = truncate(title)
         image4.text((680, 300), text=title1[0], fill="white", stroke_width=1, stroke_fill="white", font=font3, align="left")
