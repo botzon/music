@@ -1,6 +1,3 @@
-#PHPSB
-
-
 import asyncio
 import glob
 import os
@@ -43,7 +40,7 @@ async def shell_cmd(cmd):
     return out.decode("utf-8")
 
 
-class YouTube:
+class YouTubeAPI:
     def __init__(self):
         self.base = "https://www.youtube.com/watch?v="
         self.regex = r"(?:youtube\.com|youtu\.be)"
@@ -171,7 +168,7 @@ class YouTube:
 
         try:
             result = [key for key in playlist.split("\n") if key]
-        except Exception:
+        except:
             result = []
         return result
 
@@ -306,12 +303,10 @@ class YouTube:
                 "format": "bestaudio/best",
                 "outtmpl": "downloads/%(id)s.%(ext)s",
                 "geo_bypass": True,
-                "noplaylist": True,
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
                 "cookiefile": f"{cookies()}",
-                "prefer_ffmpeg": True,
             }
 
             x = YoutubeDL(ydl_optssx)
@@ -327,11 +322,9 @@ class YouTube:
                 "format": "(bestvideo[height<=?720][width<=?1280][ext=mp4])+(bestaudio[ext=m4a])",
                 "outtmpl": "downloads/%(id)s.%(ext)s",
                 "geo_bypass": True,
-                "noplaylist": True,
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "prefer_ffmpeg": True,
                 "cookiefile": f"{cookies()}",
             }
 
@@ -350,7 +343,6 @@ class YouTube:
                 "format": formats,
                 "outtmpl": fpath,
                 "geo_bypass": True,
-                "noplaylist": True,
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
@@ -368,7 +360,6 @@ class YouTube:
                 "format": format_id,
                 "outtmpl": fpath,
                 "geo_bypass": True,
-                "noplaylist": True,
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
@@ -403,7 +394,7 @@ class YouTube:
                     "yt-dlp",
                     "-g",
                     "-f",
-                    "best",
+                    "best[height<=?720][width<=?1280]",
                     f"--cookies {cookies()}",
                     link,
                 ]
@@ -419,8 +410,7 @@ class YouTube:
                     downloaded_file = stdout.decode().split("\n")[0]
                     direct = None
                 else:
-                    downloaded_file = await loop.run_in_executor(None, video_dl)
-                    direct = True
+                    return
         else:
             direct = True
             downloaded_file = await loop.run_in_executor(None, audio_dl)
