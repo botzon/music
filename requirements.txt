@@ -20,7 +20,7 @@ speedtest-cli
 spotipy
 tgcrypto
 unidecode
-pip install -U yt-dlp
+yt-dlp
 youtube-search
 youtube-search-python
 telegraph
