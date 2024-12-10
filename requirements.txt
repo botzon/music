@@ -21,6 +21,7 @@ spotipy
 tgcrypto
 unidecode
 yt-dlp
+pip install -U yt-dlp
 youtube-search
 youtube-search-python
 telegraph
