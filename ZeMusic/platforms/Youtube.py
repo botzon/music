@@ -1,4 +1,4 @@
-#@PHPSB 
+#PHPSB
 
 
 import asyncio
